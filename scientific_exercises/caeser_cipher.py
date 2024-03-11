@@ -10,14 +10,10 @@ def encrypt(word_input):
         letter = i
         if letter == " ":
             crypt_word += " "
-            continue
-        letter_index = alphabets.find(letter)
-
-        if letter_index + cipher_move > len(alphabets) - 1:
-            index_offset = letter_index + cipher_move - len(alphabets)
-            crypt_word += alphabets[index_offset]
         else:
-            crypt_word += alphabets[letter_index + cipher_move]
+            letter_index = alphabets.find(letter)
+            index_offset = (letter_index + cipher_move) % len(alphabets)
+            crypt_word += alphabets[index_offset]
 
     return crypt_word
 
@@ -42,7 +38,7 @@ def decrypt(encrypted_word):
 
 
 encrypt_result = encrypt(word)
-print('encrypt_result', encrypt_result)  # ehqmdplqqnhpwrfkxnzx
+print('encrypt_result:', encrypt_result)  # ehqmdplqqnhpwrfkxnzx
 
 decrypt_result = decrypt(encrypt_result)
-print(decrypt_result)  # benjaminnkemtochukwu
+print('decrypt_result:', decrypt_result)  # benjaminnkemtochukwu
